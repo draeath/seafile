@@ -2,7 +2,7 @@
 
 Name:           seafile
 Version:        5.1.2
-Release:        3%{?dist}
+Release:        4%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -90,6 +90,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 5.1.2-4
+- https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
+
 * Tue May 31 2016 Nikos Roussos <comzeradd@fedoraproject.org> - 5.1.2-3
 - Fix license
 
