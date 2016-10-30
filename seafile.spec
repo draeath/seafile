@@ -1,13 +1,13 @@
 %global _hardened_build 1
 
 Name:           seafile
-Version:        5.1.2
-Release:        4%{?dist}
+Version:        6.0.0
+Release:        1%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
 URL:            http://seafile.com/
-Source0:        https://github.com/haiwen/%{name}/archive/v%{version}-server.tar.gz
+Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -48,7 +48,7 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -qn %{name}-%{version}-server
+%setup -q v%{version}
 sed -i -e /\(DESTDIR\)/d lib/libseafile.pc.in
 
 
@@ -90,6 +90,10 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Sun Oct 30 2016 Julien Enselme - 6.0.0-1
+- Update to 6.0.0
+- Unretire package
+
 * Tue Jul 19 2016 Fedora Release Engineering <rel-eng@lists.fedoraproject.org> - 5.1.2-4
 - https://fedoraproject.org/wiki/Changes/Automatic_Provides_for_Python_RPM_Packages
 
