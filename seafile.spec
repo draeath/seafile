@@ -2,7 +2,7 @@
 
 Name:           seafile
 Version:        6.0.0
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -15,7 +15,7 @@ BuildRequires:  libtool
 BuildRequires:  intltool
 BuildRequires:  glib2-devel
 BuildRequires:  sqlite-devel
-BuildRequires:  openssl-devel
+BuildRequires:  compat-openssl10-devel
 BuildRequires:  libuuid-devel
 BuildRequires:  libcurl-devel
 BuildRequires:  libarchive-devel
@@ -90,6 +90,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Sun Oct 30 2016 Julien Enselme - 6.0.0-2
+- Compile against compat-openssl10 until it is compatible with OpenSSL 1.1
+
 * Sun Oct 30 2016 Julien Enselme - 6.0.0-1
 - Update to 6.0.0
 - Unretire package
