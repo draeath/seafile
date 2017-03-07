@@ -2,7 +2,7 @@
 
 Name:           seafile
 Version:        6.0.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -74,7 +74,7 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 %doc README.markdown
 %license LICENSE.txt
 %{python2_sitearch}/%{name}/
-%{python2_sitearch}/seaserv/
+%{python2_sitearch}/seafile/
 %{_libdir}/lib%{name}.so.*
 %{_bindir}/seaf-cli
 %{_bindir}/seaf-daemon
@@ -90,6 +90,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Tue Mar 07 2017 Julien Enselme <jujens@jujens.eu> - 6.0.4-2
+- Correct name of the python package
+
 * Tue Mar 07 2017 Julien Enselme <jujens@jujens.eu> - 6.0.4-1
 - Update to 6.0.4
 
