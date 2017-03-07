@@ -1,8 +1,8 @@
 %global _hardened_build 1
 
 Name:           seafile
-Version:        6.0.0
-Release:        3%{?dist}
+Version:        6.0.4
+Release:        1%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -90,6 +90,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Tue Mar 07 2017 Julien Enselme <jujens@jujens.eu> - 6.0.4-1
+- Update to 6.0.4
+
 * Sat Feb 11 2017 Fedora Release Engineering <releng@fedoraproject.org> - 6.0.0-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_26_Mass_Rebuild
 
