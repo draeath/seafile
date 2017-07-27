@@ -2,7 +2,7 @@
 
 Name:           seafile
 Version:        6.0.6
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -90,6 +90,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Thu Jul 27 2017 Fedora Release Engineering <releng@fedoraproject.org> - 6.0.6-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Mass_Rebuild
+
 * Sun May 07 2017 Julien Enselme <jujens@jujens.eu> - 6.0.6-1
 - Update to 6.0.6
 - Build with openSSL 1.0
