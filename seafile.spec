@@ -1,8 +1,8 @@
 %global _hardened_build 1
 
 Name:           seafile
-Version:        6.0.6
-Release:        3%{?dist}
+Version:        6.1.0
+Release:        1%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -33,7 +33,7 @@ Seafile is a next-generation open source cloud storage system with advanced
 support for file syncing, privacy protection and teamwork.
 
 Seafile allows users to create groups with file syncing, wiki, and discussion
-to enable easy collaboration around documents within a team. 
+to enable easy collaboration around documents within a team.
 
 
 %package        devel
@@ -55,7 +55,7 @@ sed -i -e /\(DESTDIR\)/d lib/libseafile.pc.in
 %build
 ./autogen.sh
 %configure --disable-static
-make CFLAGS="%{optflags}" %{?_smp_mflags} 
+make CFLAGS="%{optflags}" %{?_smp_mflags}
 
 
 %install
@@ -90,6 +90,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Thu Aug 10 2017 Julien Enselme <jujens@jujens.eu> - 6.1.0-1
+- Update to 6.1.0
+
 * Thu Aug 03 2017 Fedora Release Engineering <releng@fedoraproject.org> - 6.0.6-3
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_27_Binutils_Mass_Rebuild
 
