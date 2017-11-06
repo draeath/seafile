@@ -1,7 +1,7 @@
 %global _hardened_build 1
 
 Name:           seafile
-Version:        6.1.0
+Version:        6.1.3
 Release:        1%{?dist}
 Summary:        Cloud storage cli client
 
@@ -26,6 +26,8 @@ BuildRequires:  vala
 BuildRequires:  python2-devel
 BuildRequires:  libevent-devel
 BuildRequires:  jansson-devel
+
+Requires:       ccnet = %{version}
 
 
 %description
@@ -90,6 +92,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Mon Nov 06 2017 Julien Enselme <jujens@jujens.eu> - 6.1.3-1
+- Update to 6.1.3
+
 * Thu Aug 10 2017 Julien Enselme <jujens@jujens.eu> - 6.1.0-1
 - Update to 6.1.0
 
