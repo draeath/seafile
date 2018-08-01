@@ -2,7 +2,7 @@
 
 Name:           seafile
 Version:        6.2.3
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -21,13 +21,13 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libarchive-devel
 BuildRequires:  libzdb-devel
 BuildRequires:  fuse-devel >= 2.7.3
-BuildRequires:  ccnet-devel
+BuildRequires:  ccnet-devel >= 6.1.8
 BuildRequires:  vala
 BuildRequires:  python2-devel
 BuildRequires:  libevent-devel
 BuildRequires:  jansson-devel
 
-Requires:       ccnet = %{version}
+Requires:       ccnet >= 6.1.8
 
 
 %description
@@ -92,6 +92,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Wed Aug 01 2018 Julien Enselme <jujens@jujens.eu> - 6.2.3-2
+- Correct ccnet requirement
+
 * Wed Aug 01 2018 Julien Enselme <jujens@jujens.eu> - 6.2.3-1
 - Update to 6.2.3
 
