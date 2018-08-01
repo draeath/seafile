@@ -1,8 +1,8 @@
 %global _hardened_build 1
 
 Name:           seafile
-Version:        6.1.6
-Release:        2%{?dist}
+Version:        6.2.3
+Release:        1%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -21,7 +21,7 @@ BuildRequires:  libcurl-devel
 BuildRequires:  libarchive-devel
 BuildRequires:  libzdb-devel
 BuildRequires:  fuse-devel >= 2.7.3
-BuildRequires:  ccnet-devel == %{version}
+BuildRequires:  ccnet-devel
 BuildRequires:  vala
 BuildRequires:  python2-devel
 BuildRequires:  libevent-devel
@@ -92,6 +92,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Wed Aug 01 2018 Julien Enselme <jujens@jujens.eu> - 6.2.3-1
+- Update to 6.2.3
+
 * Sat Jul 14 2018 Fedora Release Engineering <releng@fedoraproject.org> - 6.1.6-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_29_Mass_Rebuild
 
