@@ -1,0 +1,34 @@
+From c0a03e27e55253ccdded7fc4a3936c06428e5f5e Mon Sep 17 00:00:00 2001
+From: ly1217 <yu.liu@seafile.com>
+Date: Thu, 15 Nov 2018 21:58:16 -0800
+Subject: [PATCH] Fix the error that duplicate case value in switch.
+
+---
+ daemon/http-tx-mgr.c | 6 ++++--
+ 1 file changed, 4 insertions(+), 2 deletions(-)
+
+diff --git a/daemon/http-tx-mgr.c b/daemon/http-tx-mgr.c
+index 80d418ab8..283e002b3 100644
+--- a/daemon/http-tx-mgr.c
++++ b/daemon/http-tx-mgr.c
+@@ -1126,6 +1126,10 @@ handle_http_errors (HttpTxTask *task, int status)
+ static int
+ curl_error_to_http_task_error (int curl_error)
+ {
++    if (curl_error == CURLE_SSL_CACERT ||
++        curl_error == CURLE_PEER_FAILED_VERIFICATION)
++        return HTTP_TASK_ERR_SSL;
++
+     switch (curl_error) {
+     case CURLE_COULDNT_RESOLVE_PROXY:
+         return HTTP_TASK_ERR_RESOLVE_PROXY;
+@@ -1136,9 +1140,7 @@ curl_error_to_http_task_error (int curl_error)
+     case CURLE_OPERATION_TIMEDOUT:
+         return HTTP_TASK_ERR_TX_TIMEOUT;
+     case CURLE_SSL_CONNECT_ERROR:
+-    case CURLE_PEER_FAILED_VERIFICATION:
+     case CURLE_SSL_CERTPROBLEM:
+-    case CURLE_SSL_CACERT:
+     case CURLE_SSL_CACERT_BADFILE:
+     case CURLE_SSL_ISSUER_ERROR:
+         return HTTP_TASK_ERR_SSL;

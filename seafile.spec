@@ -1,13 +1,15 @@
 %global _hardened_build 1
 
 Name:           seafile
-Version:        6.2.3
-Release:        2%{?dist}
+Version:        6.2.5
+Release:        1%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
 URL:            http://seafile.com/
 Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz
+# [PATCH] Fix the error that duplicate case value in switch.
+Patch0:         https://github.com/haiwen/seafile/commit/c0a03e27e55253ccdded7fc4a3936c06428e5f5e.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -51,7 +53,9 @@ developing applications that use %{name}.
 
 %prep
 %setup -q v%{version}
+%patch0 -p1
 sed -i -e /\(DESTDIR\)/d lib/libseafile.pc.in
+sed -i -e 's@#!/usr/bin/env python@#!/usr/bin/env python2@' app/seaf-cli
 
 
 %build
@@ -92,6 +96,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Sun Nov 18 2018 Julien Enselme <jujens@jujens.eu> - 6.2.5-1
+- Update to 6.2.5
+
 * Wed Aug 01 2018 Julien Enselme <jujens@jujens.eu> - 6.2.3-2
 - Correct ccnet requirement
 
