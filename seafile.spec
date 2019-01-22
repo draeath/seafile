@@ -69,11 +69,9 @@ make install DESTDIR=%{buildroot}
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
-%post -p /sbin/ldconfig
-%postun -p /sbin/ldconfig
+%ldconfig_scriptlets
 
-%post devel -p /sbin/ldconfig
-%postun devel -p /sbin/ldconfig
+%ldconfig_scriptlets devel
 
 
 %files
