@@ -1,15 +1,13 @@
 %global _hardened_build 1
 
 Name:           seafile
-Version:        6.2.5
-Release:        2%{?dist}
+Version:        6.2.11
+Release:        1%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
 URL:            http://seafile.com/
 Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz
-# [PATCH] Fix the error that duplicate case value in switch.
-Patch0:         https://github.com/haiwen/seafile/commit/c0a03e27e55253ccdded7fc4a3936c06428e5f5e.patch
 
 BuildRequires:  autoconf
 BuildRequires:  automake
@@ -53,7 +51,6 @@ developing applications that use %{name}.
 
 %prep
 %setup -q v%{version}
-%patch0 -p1
 sed -i -e /\(DESTDIR\)/d lib/libseafile.pc.in
 sed -i -e 's@#!/usr/bin/env python@#!/usr/bin/env python2@' app/seaf-cli
 
@@ -94,6 +91,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Sat Feb 23 2019 Julien Enselme <jujens@jujens.eu> - 6.2.11-1
+- Update to 6.2.11
+
 * Sat Feb 02 2019 Fedora Release Engineering <releng@fedoraproject.org> - 6.2.5-2
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_30_Mass_Rebuild
 
