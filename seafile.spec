@@ -1,7 +1,7 @@
 %global _hardened_build 1
 
 Name:           seafile
-Version:        7.0.2
+Version:        7.0.4
 Release:        1%{?dist}
 Summary:        Cloud storage cli client
 
@@ -23,7 +23,7 @@ BuildRequires:  libzdb-devel
 BuildRequires:  fuse-devel >= 2.7.3
 BuildRequires:  ccnet-devel >= 6.1.8
 BuildRequires:  vala
-BuildRequires:  python2-devel
+BuildRequires:  python3-devel
 BuildRequires:  libevent-devel
 BuildRequires:  jansson-devel
 
@@ -52,12 +52,12 @@ developing applications that use %{name}.
 %prep
 %setup -q v%{version}
 sed -i -e /\(DESTDIR\)/d lib/libseafile.pc.in
-sed -i -e 's@#!/usr/bin/env python@#!/usr/bin/env python2@' app/seaf-cli
+sed -i -e 's@#!/usr/bin/env python@#!/usr/bin/env python3@' app/seaf-cli
 
 
 %build
 ./autogen.sh
-%configure --disable-static
+%configure --disable-static PYTHON=/usr/bin/python3
 make CFLAGS="%{optflags}" %{?_smp_mflags}
 
 
@@ -74,8 +74,7 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 %files
 %doc README.markdown
 %license LICENSE.txt
-%{python2_sitearch}/%{name}/
-%{python2_sitearch}/seafile/
+%{python3_sitearch}/%{name}/
 %{_libdir}/lib%{name}.so.*
 %{_bindir}/seaf-cli
 %{_bindir}/seaf-daemon
@@ -91,7 +90,11 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
-* Thu Aug 20 2019 Julien Enselme <jujens@jujens.eu> - 7.0.2-1
+* Sun Nov 03 2019 Julien Enselme <jujens@jujens.eu> - 7.0.4-1
+- Update to 7.0.4
+- Make this package compatible with Python3
+
+* Tue Aug 20 2019 Julien Enselme <jujens@jujens.eu> - 7.0.2-1
 - Update to 7.0.2
 
 * Fri Jul 26 2019 Fedora Release Engineering <releng@fedoraproject.org> - 6.2.11-2
