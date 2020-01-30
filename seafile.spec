@@ -2,7 +2,7 @@
 
 Name:           seafile
 Version:        7.0.4
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -90,6 +90,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Thu Jan 30 2020 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.4-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_32_Mass_Rebuild
+
 * Sun Nov 03 2019 Julien Enselme <jujens@jujens.eu> - 7.0.4-1
 - Update to 7.0.4
 - Make this package compatible with Python3
