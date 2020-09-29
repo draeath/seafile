@@ -2,7 +2,7 @@
 
 Name:           seafile
 Version:        7.0.4
-Release:        4%{?dist}
+Release:        5%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -90,6 +90,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Tue Sep 29 20:44:08 CEST 2020 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 7.0.4-5
+- Rebuilt for libevent 2.1.12
+
 * Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.4-4
 - Rebuilt for https://fedoraproject.org/wiki/Fedora_33_Mass_Rebuild
 
