@@ -7,27 +7,28 @@ Summary:        Cloud storage cli client
 
 License:        GPLv2
 URL:            http://seafile.com/
-Source0:        https://github.com/haiwen/%{name}/archive/v%{version}.tar.gz
+Source0:        https://github.com/haiwen/%{name}/archive/v%{version}/%{name}-%{version}.tar.gz
 
 BuildRequires:  autoconf
 BuildRequires:  automake
-BuildRequires:  libtool
+BuildRequires:  gcc
 BuildRequires:  intltool
-BuildRequires:  glib2-devel
-BuildRequires:  sqlite-devel
-BuildRequires:  openssl-devel
-BuildRequires:  libuuid-devel
-BuildRequires:  libcurl-devel
-BuildRequires:  libarchive-devel
-BuildRequires:  libzdb-devel
-BuildRequires:  fuse-devel >= 2.7.3
-BuildRequires:  ccnet-devel >= 6.1.8
-BuildRequires:  vala
-BuildRequires:  python3-devel
-BuildRequires:  libevent-devel
-BuildRequires:  jansson-devel
+BuildRequires:  libtool
+BuildRequires:  make
 
-Requires:       ccnet >= 6.1.8
+BuildRequires:  pkgconfig(glib-2.0)
+BuildRequires:  pkgconfig(gobject-2.0)
+BuildRequires:  pkgconfig(jansson)
+BuildRequires:  pkgconfig(libcurl)
+BuildRequires:  pkgconfig(libevent)
+BuildRequires:  pkgconfig(libevent_pthreads)
+BuildRequires:  pkgconfig(libsearpc)
+BuildRequires:  pkgconfig(openssl)
+BuildRequires:  pkgconfig(uuid)
+BuildRequires:  pkgconfig(zlib)
+BuildRequires:  python3-devel
+BuildRequires:  sqlite-devel
+BuildRequires:  vala
 
 
 %description
@@ -41,7 +42,6 @@ to enable easy collaboration around documents within a team.
 %package        devel
 Summary:        Development files for %{name}
 Requires:       %{name}%{?_isa} = %{version}-%{release}
-Requires:       glib2-devel
 
 
 %description    devel
@@ -50,7 +50,7 @@ developing applications that use %{name}.
 
 
 %prep
-%setup -q v%{version}
+%setup -q
 sed -i -e /\(DESTDIR\)/d lib/libseafile.pc.in
 sed -i -e 's@#!/usr/bin/env python@#!/usr/bin/env python3@' app/seaf-cli
 
@@ -58,24 +58,22 @@ sed -i -e 's@#!/usr/bin/env python@#!/usr/bin/env python3@' app/seaf-cli
 %build
 ./autogen.sh
 %configure --disable-static PYTHON=/usr/bin/python3
-make CFLAGS="%{optflags}" %{?_smp_mflags}
+%make_build
 
 
 %install
-make install DESTDIR=%{buildroot}
+%make_install
 find %{buildroot} -name '*.la' -exec rm -f {} ';'
 find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 %ldconfig_scriptlets
-
-%ldconfig_scriptlets devel
 
 
 %files
 %doc README.markdown
 %license LICENSE.txt
 %{python3_sitearch}/%{name}/
-%{_libdir}/lib%{name}.so.*
+%{_libdir}/lib%{name}.so.0*
 %{_bindir}/seaf-cli
 %{_bindir}/seaf-daemon
 %{_mandir}/man1/*.1.*
@@ -90,7 +88,10 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
-* Tue Sep 29 20:44:08 CEST 2020 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 7.0.4-5
+* Fri Nov 06 2020 Aleksei Bavshin <alebastr@fedoraproject.org>
+- Spec cleanup: remove unused deps, update for current guidelines
+
+* Tue Sep 29 2020 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 7.0.4-5
 - Rebuilt for libevent 2.1.12
 
 * Wed Jul 29 2020 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.4-4
