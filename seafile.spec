@@ -1,8 +1,8 @@
 %global _hardened_build 1
 
 Name:           seafile
-Version:        7.0.4
-Release:        5%{?dist}
+Version:        7.0.10
+Release:        1%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -52,12 +52,11 @@ developing applications that use %{name}.
 %prep
 %setup -q
 sed -i -e /\(DESTDIR\)/d lib/libseafile.pc.in
-sed -i -e 's@#!/usr/bin/env python@#!/usr/bin/env python3@' app/seaf-cli
 
 
 %build
 ./autogen.sh
-%configure --disable-static PYTHON=/usr/bin/python3
+%configure --disable-static --with-python3
 %make_build
 
 
@@ -88,7 +87,8 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
-* Fri Nov 06 2020 Aleksei Bavshin <alebastr@fedoraproject.org>
+* Fri Nov 06 2020 Aleksei Bavshin <alebastr@fedoraproject.org> - 7.0.10-1
+- Update to 7.0.10
 - Spec cleanup: remove unused deps, update for current guidelines
 
 * Tue Sep 29 2020 Zbigniew Jędrzejewski-Szmek <zbyszek@in.waw.pl> - 7.0.4-5
