@@ -2,7 +2,7 @@
 
 Name:           seafile
 Version:        7.0.10
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -87,6 +87,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Wed Jan 27 2021 Fedora Release Engineering <releng@fedoraproject.org> - 7.0.10-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_34_Mass_Rebuild
+
 * Fri Nov 06 2020 Aleksei Bavshin <alebastr@fedoraproject.org> - 7.0.10-1
 - Update to 7.0.10
 - Spec cleanup: remove unused deps, update for current guidelines
