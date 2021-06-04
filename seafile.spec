@@ -2,7 +2,7 @@
 
 Name:           seafile
 Version:        8.0.2
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -87,6 +87,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Fri Jun 04 2021 Python Maint <python-maint@redhat.com> - 8.0.2-2
+- Rebuilt for Python 3.10
+
 * Wed May 26 2021 Aleksei Bavshin <alebastr@fedoraproject.org> - 8.0.2-1
 - Update to 8.0.2
 
