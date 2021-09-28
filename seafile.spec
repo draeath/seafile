@@ -1,8 +1,8 @@
 %global _hardened_build 1
 
 Name:           seafile
-Version:        8.0.3
-Release:        3%{?dist}
+Version:        8.0.4
+Release:        1%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -87,6 +87,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Tue Sep 28 2021 Aleksei Bavshin <alebastr@fedoraproject.org> - 8.0.4-1
+- Update to 8.0.4
+
 * Tue Sep 14 2021 Sahana Prasad <sahana@redhat.com> - 8.0.3-3
 - Rebuilt with OpenSSL 3.0.0
 
