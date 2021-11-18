@@ -1,7 +1,7 @@
 %global _hardened_build 1
 
 Name:           seafile
-Version:        8.0.4
+Version:        8.0.5
 Release:        1%{?dist}
 Summary:        Cloud storage cli client
 
@@ -87,6 +87,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Thu Nov 18 2021 Aleksei Bavshin <alebastr@fedoraproject.org> - 8.0.5-1
+- Update to 8.0.5
+
 * Tue Sep 28 2021 Aleksei Bavshin <alebastr@fedoraproject.org> - 8.0.4-1
 - Update to 8.0.4
 
