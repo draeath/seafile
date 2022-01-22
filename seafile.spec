@@ -2,7 +2,7 @@
 
 Name:           seafile
 Version:        8.0.5
-Release:        1%{?dist}
+Release:        2%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -87,6 +87,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Sat Jan 22 2022 Fedora Release Engineering <releng@fedoraproject.org> - 8.0.5-2
+- Rebuilt for https://fedoraproject.org/wiki/Fedora_36_Mass_Rebuild
+
 * Thu Nov 18 2021 Aleksei Bavshin <alebastr@fedoraproject.org> - 8.0.5-1
 - Update to 8.0.5
 
