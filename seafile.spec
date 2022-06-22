@@ -1,8 +1,8 @@
 %global _hardened_build 1
 
 Name:           seafile
-Version:        8.0.6
-Release:        2%{?dist}
+Version:        8.0.7
+Release:        1%{?dist}
 Summary:        Cloud storage cli client
 
 License:        GPLv2
@@ -87,6 +87,9 @@ find %{buildroot} -name 'seafile.desktop' -exec rm -f {} ';'
 
 
 %changelog
+* Wed Jun 22 2022 Aleksei Bavshin <alebastr@fedoraproject.org> - 8.0.7-1
+- Update to 8.0.7
+
 * Mon Jun 13 2022 Python Maint <python-maint@redhat.com> - 8.0.6-2
 - Rebuilt for Python 3.11
 
